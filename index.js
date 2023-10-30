@@ -57,18 +57,21 @@ sortAllButton.addEventListener("click", (event) => {
     sortAll();
     render();
 });
+addNumber.value = "";
 
 
 // *** Render ***
 function render() {
-    // Render number on the Number Bank
+    // Render numbers on the Number Bank
     const startingNumber = state.numbers.join(', ');
     numberBank.textContent = startingNumber;
     console.log(startingNumber);
     numberBank.replaceChildren(...startingNumber);
      
+    // Render odd numbers on the Odd Bank 
     const oddNumbers = state.odds.join(', ');
     oddBank.textContent = oddNumbers;
+    // Render even numbers on the Even Bank 
     const evenNumbers = state.evens.join(', ');
     evenBank.textContent = evenNumbers;
   }
@@ -87,13 +90,14 @@ function sortOne () {
 }
 
 function sortAll () {
-    for (let i = 0; i < numbers.length; i++){
-      if(numbers[i]%2 == 0){
-        state.evens.push(numbers[i]);
+    for (let i = 0; i < state.numbers.length; i++){
+      if(state.numbers[i]%2 == 0){
+        state.evens.push(state.numbers[i]);
       }  else {
-        state.odds.push(numbers[i]);
+        state.odds.push(state.numbers[i]);
+        }
     }
-    }
-    //render();
+    console.log(state.evens);
+    console.log(state.odds);
 }
 
