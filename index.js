@@ -35,10 +35,9 @@ render();
 // TODO: Add event listener so that numbers are added when the form is submitted
 // *** Event Listeners ***
 form.addEventListener("submit", addNumber);
-addNumber.value = "";
+addNumber.value = " ";
 function addNumber(event) {
     event.preventDefault();
-    // const itemValue = form.elements.grocery.value
     const number = form.elements.number.value;
     state.numbers.push(number);
     // Reset input value so it's empty after adding item   
@@ -57,7 +56,7 @@ sortAllButton.addEventListener("click", (event) => {
     sortAll();
     render();
 });
-addNumber.value = "";
+
 
 
 // *** Render ***
@@ -87,17 +86,13 @@ function sortOne () {
     }
    console.log(state.evens);
    console.log(state.odds);
+   console.log('sortOne');
 }
 
 function sortAll () {
-    for (let i = 0; i < state.numbers.length; i++){
-      if(state.numbers[i]%2 == 0){
-        state.evens.push(state.numbers[i]);
-      }  else {
-        state.odds.push(state.numbers[i]);
-        }
+    while (state.numbers.length > 0) {
+        sortOne();
     }
-    console.log(state.evens);
-    console.log(state.odds);
+    console.log('sortAll');
 }
 
